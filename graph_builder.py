@@ -47,9 +47,9 @@ for root, dirs, files in os.walk(infile):
 							val1 = int(t1[i][j])
 							val2 = int(t2[i][j])
 							if val1==val2:
-								same = same+1
+								same = same + 1
 							else:
-								diff = diff + abs(val1-val2)
+								diff = diff + 1
 					print(str(file_number_1)+' '+str(file_number_2)+' '+str(diff),file = of)
 
 
