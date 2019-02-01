@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-
+#define FRAMES 33
 using namespace std;
 
 vector< vector < vector <int> > >img;
@@ -204,10 +204,24 @@ int get_list_size(int r, int c){
 	return size;
 }
 
+void print_list(int r, int c){
+	node* head = compressor[r-1][c-1];
+	int first = 0;
+	while(head){
+		if(first) printf(",");
+		printf(" (%d-%d)",head->frameno, head->val);
+		head = head->next;
+		first = 1;
+	}
+	printf("\n");
+	return;
+}
+
 int main(){
-	pair<int,int>rc = load(33);
+	pair<int,int>rc = load(FRAMES);
 	init_cmp(rc.first,rc.second);
 	for(int i = 1; i<=rc.first; ++i){
+		//cout<<i<<"\n";
 		for(int j = 1; j<=rc.second; ++j){
 			//cout<<i<<" "<<j<<"\n";
 			construct(i,j,root);
@@ -217,13 +231,20 @@ int main(){
 	int tot_size = 0;
 	for(int i = 1; i<=rc.first; ++i){
 		for(int j = 1; j<=rc.second; ++j){
-			cout<<i<<" "<<j<<" ";
+			//cout<<i<<" "<<j<<" ";
 			int sz = get_list_size(i,j);
-			cout<<"size: "<<sz<<"\n";
+			//cout<<"size: "<<sz<<"\n";
 			tot_size+=sz;
 		}
 	}	
-	cout<<tot_size<<"\n";
+	cout<<tot_size<<"\n\n\n";
+	cout<<"printing compressed information\n";
+	for(int i = 1; i<=rc.first; ++i){
+		for(int j = 1; j<=rc.second; ++j){
+			cout<<i<<" "<<j<<" list: ";
+			print_list(i,j);
+		}
+	}	
 	//cout<<profit<<"\n";
 	return 0;
 }
