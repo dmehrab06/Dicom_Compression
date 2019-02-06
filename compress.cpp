@@ -217,6 +217,35 @@ void print_list(int r, int c){
 	return;
 }
 
+void outputinfile(int totframe){
+    ofstream myFile ("compressed.bin", ios::out | ios::binary);
+    int r = compressor.size();
+    int c = compressor[0].size();
+    myFile.write(reinterpret_cast<const char *>(&totframe), sizeof(totframe));
+    myFile.write(reinterpret_cast<const char *>(&r), sizeof(r));
+    myFile.write(reinterpret_cast<const char *>(&c), sizeof(c));
+    long long pack = 0;
+    int turn = 0;
+    for(int i = 0;i<r;++i){
+        for(int j = 0;j<c;++j){
+            node *cur = compressor[i][j];
+            while(cur->next){
+                cur = cur->next;
+                int fr = cur->frameno; int px = cur->val;
+                if(fr==0)continue;
+                pack = pack | fr; pack = pack<<8; pack = pack|px;
+                turn++;
+                if(turn==4){
+                    myFile.write(reinterpret_cast<const char *>(&pack), sizeof(pack));
+                    pack = 0; turn = 0;
+                }
+                else pack = pack<<8;
+            }
+        }
+    }
+    myFile.close();
+}
+
 int main(){
 	pair<int,int>rc = load(FRAMES);
 	init_cmp(rc.first,rc.second);
@@ -238,13 +267,14 @@ int main(){
 		}
 	}	
 	cout<<tot_size<<"\n\n\n";
-	cout<<"printing compressed information\n";
+	/*cout<<"printing compressed information\n";
 	for(int i = 1; i<=rc.first; ++i){
 		for(int j = 1; j<=rc.second; ++j){
 			cout<<i<<" "<<j<<" list: ";
 			print_list(i,j);
 		}
-	}	
+	}*/	
 	//cout<<profit<<"\n";
+	outputinfile(FRAMES);
 	return 0;
 }
