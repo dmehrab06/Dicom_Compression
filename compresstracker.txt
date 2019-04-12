@@ -1,0 +1,23 @@
+6
+Maxmimum bit needed to represent a frame: 6
+Maxmimum bit needed to represent a pixel: 12
+bit histogram for frames:
+frequency of 1 bit frames: 256130
+frequency of 2 bit frames: 512216
+frequency of 3 bit frames: 1030624
+frequency of 4 bit frames: 1989917
+frequency of 5 bit frames: 3135364
+frequency of 6 bit frames: 390609
+bit histogram for pixels:
+frequency of 1 bit pixels: 192381
+frequency of 2 bit pixels: 117099
+frequency of 3 bit pixels: 256544
+frequency of 4 bit pixels: 462608
+frequency of 5 bit pixels: 622265
+frequency of 6 bit pixels: 522275
+frequency of 7 bit pixels: 723854
+frequency of 8 bit pixels: 1786045
+frequency of 9 bit pixels: 2109744
+frequency of 10 bit pixels: 467127
+frequency of 11 bit pixels: 54882
+frequency of 12 bit pixels: 36
