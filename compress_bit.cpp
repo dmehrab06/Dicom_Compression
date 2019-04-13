@@ -3,6 +3,9 @@
 #define MXVAL 1000005
 #define MXBIT 65
 
+#define FRMBITSTUFF 2
+#define PXLBITSTUFF 2
+
 using namespace std;
 
 int bits_needed[MXVAL];
@@ -10,6 +13,12 @@ int bit_frequency_frame[MXBIT];
 int bit_frequency_pixel[MXBIT];
 
 vector < int > allcontents;
+vector < int > bit_class_frames;
+vector < int > bit_class_pixels;
+
+void set_bit_classes(int frmxbit, int pxmxbit){
+	
+}
 
 void find_bits_needed(){
 
