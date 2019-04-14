@@ -330,7 +330,7 @@ void print_supplements( pair<int,int>rc ){
 
 int main(){
 
-	ifstream fin("totalframe.txt");
+	ifstream fin("dimension.txt");
 	int FRAMES; fin>>FRAMES; fin.close();
 
 	pair<int,int>rc = load(FRAMES);
