@@ -1,2 +1,6 @@
-1) Make sure pydicom is installed
-2) run bash compile.sh
+Prerequisite:
+	pydicom
+
+To compress the files in dataset Folder, run compress.sh
+
+To decompress it run decompress.sh
