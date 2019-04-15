@@ -20,7 +20,7 @@ rm compress_bit
 rm compress_dump
 rm compress_mst
 #rm -r allframes/*.txt
-rm graph.txt
+#rm graph.txt
 rm infodump.txt
 rm bitstream.txt
 echo "compression complete"
