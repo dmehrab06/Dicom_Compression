@@ -61,6 +61,7 @@ for root, dirs, files in os.walk(infile):
 							else:
 								diff = diff + 1
 					
+					print('finished reading '+str(idx)+' '+str(idy))
 					print(str(idx)+' '+str(idy)+' '+str(diff),file = of)
 
 

@@ -1,3 +1,4 @@
+rm -r allframes/*.txt
 mkdir allframes
 python compress_dcm2jpg.py
 echo "finished extracting pixels" 

@@ -18,9 +18,38 @@ vector < int > bit_class_pixels;
 
 
 void set_bit_classes(int frmxbit, int pxmxbit){
+	cout<<frmxbit<<" "<<pxmxbit<<"\n";
 	bit_class_frames.push_back(frmxbit/2);
 	bit_class_frames.push_back(frmxbit);
 	bit_class_pixels.push_back(pxmxbit/2);
+	bit_class_pixels.push_back(pxmxbit);
+}
+
+void set_bit_classes_2(int frmxbit, int pxmxbit){
+	cout<<frmxbit<<" "<<pxmxbit<<"\n";
+	
+	for(int i = 1; i<=frmxbit; ++i)bit_frequency_frame[i]+=bit_frequency_frame[i-1];
+	for(int i = 1; i<=pxmxbit; ++i)bit_frequency_pixel[i]+=bit_frequency_pixel[i-1];
+
+	int halffrmmxbit,halfpxmxbit;
+
+	for(int i = 1; i<=frmxbit; ++i)
+		if(bit_frequency_frame[i]>=bit_frequency_frame[frmxbit]/2){
+			halffrmmxbit = i;
+			break;
+		}
+	
+	for(int i = 1; i<=pxmxbit; ++i)
+		if(bit_frequency_pixel[i]>=bit_frequency_pixel[pxmxbit]/2){
+			halfpxmxbit = i;
+			break;
+		}
+
+	cout<<halffrmmxbit<<" "<<halfpxmxbit<<"\n";
+
+	bit_class_frames.push_back(halffrmmxbit);
+	bit_class_frames.push_back(frmxbit);
+	bit_class_pixels.push_back(halfpxmxbit);
 	bit_class_pixels.push_back(pxmxbit);
 }
 
@@ -69,7 +98,7 @@ void calc_bit_info(){
 		turn++;
 	}
 
-	set_bit_classes(frmxbit,pxmxbit);
+	set_bit_classes_2(frmxbit,pxmxbit);
 }
 
 void printbits(int val, int bits, ofstream &ff){
